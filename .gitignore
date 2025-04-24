@@ -1,2 +1,4 @@
 .env
 venv/
+wav_files/
+converted_mp3/
