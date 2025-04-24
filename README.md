@@ -46,7 +46,7 @@ sudo apt update && sudo apt install ffmpeg
 ### 2. Clone & Setup Python Environment
 
 ```bash
-git clone https://github.com/your-username/mureka-audio-uploader.git
+git clone https://github.com/pratamayuzar/mureka-audio-uploader.git
 cd mureka-audio-uploader
 
 # Create virtual environment
