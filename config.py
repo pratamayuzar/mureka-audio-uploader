@@ -15,3 +15,5 @@ MAX_DURATION = int(os.getenv("MAX_DURATION", 269))     # seconds
 
 API_KEY = os.getenv("MUREKA_API_KEY")
 API_BASE = os.getenv("MUREKA_API_BASE", "https://api.mureka.ai")
+
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")

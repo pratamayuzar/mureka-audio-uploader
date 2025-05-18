@@ -76,13 +76,17 @@ Replace `your_mureka_api_key` with your actual API key from Mureka.
 
 ```
 project-folder/
-├── convert_wav_to_mp3.py      # Convert script
-├── upload_to_mureka.py        # Upload script
+├── convert_wav_to_mp3.py      # Convert WAV → MP3
+├── upload_to_mureka.py        # Upload trimmed MP3s to Mureka
+├── download_youtube.py        # NEW: Download MP3s from YouTube by keyword
+├── mp3_trimmer.py             # NEW: Trim MP3s to fixed length
 ├── requirements.txt
 ├── README.md
 ├── .env
-├── wav_files/                 # Place original WAV files here
-└── converted_mp3/             # MP3 output goes here
+├── wav_files/
+├── converted_mp3/
+├── downloads/                 # NEW: Raw MP3s from YouTube
+└── trimmed/                   # NEW: Trimmed MP3s ready for upload
 ```
 
 ---
@@ -122,25 +126,64 @@ You can run the script with the following options:
 
 1. **Upload first 3 files** (without completing):
    ```bash
-   python upload.py --limit 3
+   python upload_to_mureka.py --limit 3
    ```
 
 2. **Upload all files and complete the session**:
    ```bash
-   python upload.py --complete
+   python upload_to_mureka.py --complete
    ```
 
 3. **Reuse an existing upload session and complete**:
    ```bash
-   python upload.py --upload-id 1436211 --complete
+   python upload_to_mureka.py --upload-id 1436211 --complete
    ```
+
+---
+
+### 3. Download from YouTube
+
+This script helps you search and download up to 100 songs from YouTube based on a keyword or genre.
+
+#### Usage
+
+```bash
+python download_youtube.py --query "koplo remix" --limit 100 --output ./downloads
+```
+
+#### Arguments
+
+* `--query` (required): Search term (e.g., `koplo remix`)
+* `--limit`: Max number of songs to download (default: 10)
+* `--output`: Target folder for downloaded MP3s (default: `downloads`)
+
+The script also retrieves basic metadata (title, artist, album) if available.
+
+---
+
+### 4. Trim MP3 Files
+
+This trims `.mp3` files to a maximum duration (e.g., 30 seconds) and saves them to another folder. Useful for preparing fine-tuning datasets.
+
+#### Usage
+
+```bash
+python mp3_trimmer.py --source ./downloads --target ./trimmed --max_duration 30
+```
+
+#### Arguments
+
+* `--source` (required): Folder with original MP3s
+* `--target` (required): Destination folder for trimmed MP3s
+* `--max_duration`: Maximum length in seconds (default: 30)
+
+✅ Files already present in the target folder will be skipped automatically.
 
 ---
 
 ## 🔐 Tips
 
 - Mureka currently only supports 100–200 files per upload session.
-- Use high-quality `.wav` files for better fine-tune results.
 
 ---
 

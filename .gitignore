@@ -2,6 +2,7 @@
 venv/
 wav_files/
 converted_mp3/
-success_files/
+success_files*/
 fail_files/
+downloads*/
 __pycache__

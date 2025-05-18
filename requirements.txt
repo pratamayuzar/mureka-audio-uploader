@@ -1,3 +1,6 @@
 pydub
 requests
 python-dotenv
+yt-dlp
+mutagen
+isodate

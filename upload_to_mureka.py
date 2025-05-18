@@ -134,6 +134,9 @@ def main(upload_id=None, limit=None, complete=False):
 
 
 if __name__ == "__main__":
+    # sample usage:
+    # python upload_to_mureka.py --upload-id <upload_id> --limit 10 --complete
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--upload-id", help="Reuse an existing upload_id")
     parser.add_argument("--limit", type=int, help="Limit number of files to upload")
