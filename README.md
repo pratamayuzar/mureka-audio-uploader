@@ -105,16 +105,35 @@ This creates `.mp3` files in the `converted_mp3/` folder.
 
 Ensure you have between **100 and 200** `.mp3` files in the `converted_mp3/` folder.
 
-Then run:
+You can run the script with the following options:
 
-```bash
-python upload_to_mureka.py
-```
+### Arguments
 
-The script will:
-- Create a new upload session
-- Upload all MP3 files as parts
-- Complete the upload
+- `--upload-id UPLOAD_ID`:
+  Reuse an existing upload session. If not provided, a new upload session will be created.
+  
+- `--limit LIMIT`:
+  Limit the number of files to upload. For example, `--limit 5` will upload the first 5 files.
+
+- `--complete`:
+  Complete the upload after sending the files. If not provided, the upload session will remain open, and you can complete it manually later.
+
+### Examples
+
+1. **Upload first 3 files** (without completing):
+   ```bash
+   python upload.py --limit 3
+   ```
+
+2. **Upload all files and complete the session**:
+   ```bash
+   python upload.py --complete
+   ```
+
+3. **Reuse an existing upload session and complete**:
+   ```bash
+   python upload.py --upload-id 1436211 --complete
+   ```
 
 ---
 
